@@ -1,0 +1,574 @@
+@import "./mixins/reset"
+@import "./mixins/breakpoints"
+@import "./mixins/reset"
+@import "./mixins/util"
+@import "./reset"
+@import "./variables"
+
+@import "./css/fonts.css"
+
+html
+    scroll-behavior: smooth
+    +fs(16px)
+
+    +screen-down(sm)
+        +fs(14px)
+
+button > *
+    pointer-events: none
+
+body
+    font-family: 'Assistant', sans-serif
+    letter-spacing: 0.04em
+    font-weight: 300
+    background-color: $white-bg
+    color: $black
+
+h1
+    +fs(64px)
+    font-family: 'History Pro', sans-serif
+    letter-spacing: 0.04em
+    text-transform: uppercase
+
+    +screen-down(lg)
+        +fs(48px)
+
+    +screen-up(lg)
+        +fs(80px)
+
+h2
+    +fs(32px)
+    font-weight: 200
+    line-height: 64px
+    letter-spacing: 0.04em
+
+    +screen-down(lg)
+        +fs(24px)
+
+    +screen-up(lg)
+        +fs(36px)
+
+h3
+    +fs(24px)
+    font-family: 'History Pro', sans-serif
+    text-transform: uppercase
+
+h4
+    +fs(18px)
+    font-family: 'History Pro', sans-serif
+    text-transform: uppercase
+
+.footer-text
+    +fs(12px)
+    font-weight: 300
+    color: $grey
+
+.text-sm
+    +fs(12px)
+    font-weight: 300
+    color: $grey
+
+.numeric-text
+    +fs(72px)
+    font-weight: 200
+    line-height: 72px
+
+    +screen-down(sm)
+        +fs(65px)
+        line-height: 65px
+
+.section
+    padding: 60px 0 60px
+
+.btn-cta
+    border: 3px solid $grey
+    padding: 0 36px
+    height: 46px
+    color: $grey
+    text-transform: uppercase
+    font-family: 'History Pro', sans-serif
+    +fs(18px)
+
+    &:active, &:hover, &:focus
+        border: 3px solid $white
+        color: $white
+        transition: all 0.5s ease
+
+//<!--    Main section, id=main-->
+
+.slide
+
+    &-bg
+        transition: opacity 0.5s ease
+        opacity: 1
+
+    &-1
+        background: url('../img/main-bg-1.png') no-repeat center top/cover
+        height: 100vh
+        width: 100%
+        position: absolute
+        top: 0
+        left: 0
+
+    &-2
+        background: url('../img/main-bg-2.png') no-repeat center top/cover
+        height: 100vh
+        width: 100%
+        position: absolute
+        top: 0
+        left: 0
+
+.opacity-none
+    opacity: 0
+
+
+.main
+    min-height: 100vh
+    color: $white
+    overflow-x: hidden
+    position: relative
+
+    +screen-up(lg)
+        padding: 17px 0 0
+
+    & .btn-cta
+        margin-top: 50px
+
+        +screen-down(lg)
+            margin-top: 67px
+
+    & h1
+        margin-top: 20vh
+
+        +screen-up(lg)
+            margin-top: 30vh
+
+.menu
+
+    +screen-down(lg)
+        box-sizing: border-box
+        letter-spacing: 4px
+        text-transform: uppercase
+        color: #FFF
+        position: absolute
+        top: 0
+        right: 0
+        width: 300px
+        height: 50vh
+        padding: 100px 0px 0px 50px
+        background: $black
+        opacity: 0.9
+        z-index: 5
+        transform-origin: 0% 0%
+        transform: translate(100%, 0)
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0)
+
+    +screen-down(md)
+        height: 100vh
+
+    & li
+        color: $white
+        padding-bottom: 10px
+        border-bottom: 1px solid transparent
+
+        +screen-down(lg)
+            border-bottom: none
+
+        &:active, &:hover, &:focus
+            border-bottom: 1px solid $grey
+            transition: all 0.5s ease
+
+            +screen-down(lg)
+                border-bottom: none
+
+    &-active
+
+        +screen-down(lg)
+            transform: none
+
+    &__link
+        color: #FFF
+
+    &__toggler
+        width: 32px
+        height: 4px
+        margin-bottom: 5px
+        background-color: #FFFFFF
+        border-radius: 3px
+        position: relative
+        z-index: 6
+        transform-origin: 4px 0px
+        transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease
+
+#menuToggle
+    position: relative
+    margin-right: 10%
+    margin-top: 10vh
+
+    +screen-down(lg)
+        margin-right: 5%
+        margin-top: 5vh
+
+    & input
+        display: block
+        width: 42px
+        height: 32px
+        position: absolute
+        top: -5px
+        left: -5px
+        cursor: pointer
+        opacity: 0
+        z-index: 7
+
+#menuToggle input:checked~.menu__toggler
+    opacity: 1
+    transform: rotate(45deg) translate(3px, 0px)
+    background: #FFFFFF
+
+#menuToggle input:checked~.menu__toggler:nth-last-child(2)
+    opacity: 0
+    transform: rotate(0deg) scale(0.2, 0.2)
+
+#menuToggle input:checked~.menu__toggler:nth-last-child(1)
+    transform: rotate(-45deg) translate(-1px, 0px)
+
+.circle
+    border: 1px solid $white
+    border-radius: 50%
+    height: 7px
+    width: 7px
+    margin-right: 7px
+
+.feature
+    margin-bottom: 12px
+    min-width: 250px
+
+    & p
+        color: $white
+
+    &:last-child
+        margin-bottom: 0
+
+        +screen-down(lg)
+            margin-bottom: 12px
+
+    &-wrapper
+
+        +screen-down(lg)
+            margin-bottom: 55px
+
+    &-block
+
+        +screen-down(lg)
+            margin: 0 auto
+
+//<!--    Main end-->
+
+//<!--    About us section id=about-us-->
+#about-us
+
+    & .info
+        max-width: 400px
+        text-align: justify
+        padding-top: 30px
+        margin-bottom: 60px
+
+        +screen-down(lg)
+            max-width: 100%
+
+.statistics
+    display: flex
+    flex-wrap: wrap
+
+    & .statistic-item
+        padding-top: 21px
+        display: flex
+        align-items: flex-end
+        width: calc(50% - 15px)
+        border-top: 2px solid $grey
+        margin-bottom: 50px
+
+        +screen-down(sm)
+            width: 40%
+
+        &:nth-child(odd)
+            margin-right: 30px
+
+            +screen-down(sm)
+                margin-right: 10%
+
+        & p
+            max-width: 150px
+            width: 100%
+//<!--    About us end-->
+
+//<!--    Choose estate section id=choose-estate-->
+.choose-estate
+    padding-bottom: 40px
+
+    & h3
+        margin-bottom: 40px
+
+    & img
+        width: 100%
+        height: auto
+        vertical-align: bottom
+
+.info-card
+    position: relative
+    display: flex
+    flex-direction: column
+
+    +screen-up(lg)
+        flex-direction: row
+
+    +screen-down(lg)
+        margin-bottom: 100px
+
+    &::before
+        content: ''
+        width: 100%
+        position: absolute
+        height: 1px
+        background: $grey
+
+        +screen-down(lg)
+            top: -20px
+
+    &:nth-child(2)
+        margin-bottom: 40px
+
+        &::before
+            bottom: 0
+            +screen-down(lg)
+                top: -50px
+
+    & div
+        width: 40%
+        +screen-down(lg)
+            width: 90%
+            margin-bottom: 40px!important
+
+    & h4
+        margin-bottom: 35px
+
+    & p
+        text-align: justify
+
+    & > img
+        width: 50%
+
+        +screen-down(lg)
+            width: 90%
+
+.hidden
+    display: none
+
+.active
+    display: block
+
+.button-selector
+    width: 100%
+    background: $white
+    height: 60px
+    margin-bottom: 22px
+
+    &:active,
+    &:focus,
+    &:hover
+        background: $white
+
+.selected
+
+    &::after
+        content: ''
+        background: $black
+        height: 1px
+        width: 222px
+        position: absolute
+        +abs-center()
+        top: 47px
+
+.estate-card
+    margin-bottom: 40px
+
+    & > div
+        background: $white
+        width: 100%
+        max-width: 555px
+        padding: 25px 0
+
+    & img
+        width: 100%
+        max-width: 555px
+
+    & span
+        font-weight: 600
+
+    &__info
+        margin-bottom: 22px
+
+    &__desc
+        width: 350px
+
+        & > p
+            margin-bottom: 24px
+
+        +screen-down(lg)
+            width: 310px
+
+        & .footer-text
+            color: $black
+
+        & h4
+            margin-bottom: 24px
+
+.book-list
+    padding-bottom: 60px
+
+.btn-main
+    border: 3px solid $grey
+    padding: 0 36px
+    height: 46px
+    color: $black
+    text-transform: uppercase
+    font-family: 'History Pro', sans-serif
+    +fs(18px)
+
+    &:active, &:hover, &:focus
+        border: 3px solid $black
+        transition: all 0.5s ease
+
+
+//<!--    Choose estate end-->
+
+//<!--    FAQ section id=faq-->
+
+details
+    width: 100%
+    min-height: 5px
+    padding-bottom: 25px
+    position: relative
+    +fs(16px)
+    border-bottom: 1px solid $grey
+
+    &[open]
+        & .control-icon-close
+            display: initial
+
+        & .control-icon-expand
+            display: none
+        & summary ~ *
+            animation: sweep .5s ease-in-out
+
+    & p
+        padding-top: 25px
+        max-width: 480px
+        width: 100%
+        text-align: justify
+
+        +screen-down(lg)
+            max-width: 100%
+
+summary
+    display: flex
+    justify-content: space-between
+    align-items: center
+    font-weight: 500
+    cursor: pointer
+
+    &:focus
+        outline: none
+
+    &:focus::after
+        content: ""
+        height: 100%
+        width: 100%
+        display: block
+        position: absolute
+        top: 0
+        left: 0
+
+    &::-webkit-details-marker
+        display: none
+
+.faq-form
+    margin-top: 40px
+
+    &__item
+        margin-bottom: 25px
+
+.control-icon
+    fill: rebeccapurple
+
+    &-close
+        display: none
+
+@keyframes sweep
+    0%
+        opacity: 0
+        margin-left: -10px
+    100%
+        opacity: 1
+        margin-left: 0
+
+//<!--    FAQ end-->
+
+//<!--    Consultation section id=consultation-->
+
+.consultation
+    padding: 60px 0 0
+
+    &-info
+        margin-bottom: 12px
+
+        & p
+            color: $black
+
+.form
+    padding: 40px 0 53px
+
+    & input
+        border: none
+        border-bottom: 1px solid $grey
+        background: none
+        border-radius: 0
+
+        &:active, &:hover, &:focus
+            border-bottom: 1px solid $black
+            transition: all 0.5s ease
+            background: none
+            border-radius: 0
+
+    &__desc
+        margin-bottom: 40px
+
+    & .btn-main
+        margin-top: 40px
+
+        +screen-down(lg)
+            display: block
+            margin: 0 auto
+            margin-top: 45px
+
+.map
+    flex: 1
+
+    & > iframe
+        width: 100%
+        height: 100%
+
+        +screen-down(lg)
+            height: 260px
+            width: calc(100% + 30px)
+            margin-left: -15px
+
+//<!--    Consultation end-->
+
+//<!--    Footer section id=consultation-->
+
+.footer
+    background-color: $black
+    padding: 12px
+
+//<!--    Footer end-->
